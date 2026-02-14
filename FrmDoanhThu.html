@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quốc Vinh Billiards - Doanh thu</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#d9d9d9;
+}
+
+/* ===== HEADER ===== */
+.header{
+    height:60px;
+    background:#e6e6e6;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.header .title{
+    font-size:26px;
+    font-weight:700;
+}
+
+.header .user{
+    font-size:14px;
+}
+
+/* ===== TOP MENU ===== */
+.top-menu{
+    height:38px;
+    background:#bdbdbd;
+    display:flex;
+    align-items:center;
+}
+
+.top-menu div{
+    padding:8px 25px;
+    font-weight:600;
+    color:#0033cc;
+}
+
+.top-menu .active{
+    background:#fff;
+    border-radius:4px 4px 0 0;
+}
+
+/* ===== MAIN ===== */
+.main{
+    display:flex;
+    height:calc(100vh - 98px);
+}
+
+/* ===== LEFT CONTENT ===== */
+.left{
+    flex:1;
+    background:#efefef;
+    padding:10px;
+}
+
+/* FILTER */
+.filter{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.filter input{
+    padding:4px;
+}
+
+/* TABLE ===== */
+.table-box{
+    background:#fff;
+    border:1px solid #999;
+}
+
+.table-box table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+.table-box th,
+.table-box td{
+    border:1px solid #999;
+    padding:6px;
+    text-align:center;
+}
+
+.table-box th{
+    background:#d9d9d9;
+}
+
+.table-box tr.active{
+    background:#cce0ff;
+}
+
+/* PAGINATION */
+.pagination{
+    margin-top:6px;
+    text-align:center;
+}
+
+.pagination span{
+    display:inline-block;
+    padding:4px 8px;
+    background:#2f6df6;
+    color:#fff;
+    margin:0 2px;
+    font-size:13px;
+}
+
+/* ===== RIGHT PANEL ===== */
+.right{
+    width:360px;
+    background:#dcdcdc;
+    padding:10px;
+    border-left:2px solid #aaa;
+}
+
+/* TABS */
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:6px;
+}
+
+.tabs div{
+    padding:6px 12px;
+    background:#eee;
+    font-weight:600;
+}
+
+.tabs .active{
+    background:#fff;
+    border-bottom:2px solid #fff;
+}
+
+/* TIME BOX */
+.time-box{
+    background:#fff;
+    border:1px solid #999;
+    padding:6px;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.time-box div{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* TABLE NAME */
+.table-name{
+    background:#fff;
+    text-align:center;
+    font-size:28px;
+    color:red;
+    font-weight:700;
+    padding:8px;
+    margin-bottom:6px;
+}
+
+/* ACTION BUTTONS */
+.bill-actions{
+    display:flex;
+    gap:6px;
+    margin-bottom:6px;
+}
+
+.bill-actions button{
+    flex:1;
+    padding:6px;
+    font-weight:600;
+}
+
+/* BILL ITEMS */
+.bill-items{
+    background:#fff;
+    border:1px solid #999;
+    height:180px;
+    margin-bottom:6px;
+}
+
+.bill-items table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+.bill-items th,
+.bill-items td{
+    border:1px solid #aaa;
+    padding:5px;
+    text-align:center;
+}
+
+/* TOTAL */
+.total{
+    background:#e6e6e6;
+    padding:6px;
+    font-size:13px;
+}
+
+.total div{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:4px;
+}
+
+.total .sum{
+    font-size:18px;
+    font-weight:700;
+    color:red;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="title">Quốc Vinh Billiards</div>
+    <div class="user">người sử dụng: QV004 | Phan Huy</div>
+</div>
+
+<!-- MENU -->
+<div class="top-menu">
+    <div class="active">Doanh thu</div>
+    <div>Thanh toán</div>
+    <div>Đặt bàn</div>
+    <div>Nhân viên</div>
+    <div>Khuyến mãi</div>
+</div>
+
+<div class="main">
+
+<!-- LEFT -->
+<div class="left">
+
+    <div class="filter">
+        <b>Theo ngày</b>
+        Từ: <input type="text" value="7/12/2014 8:00">
+        Đến: <input type="text" value="7/12/2014 23:59">
+    </div>
+
+    <div class="table-box">
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Số bàn</th>
+                <th>Giờ vào</th>
+                <th>Giờ ra</th>
+                <th>Tiền hàng</th>
+                <th>Tiền giờ</th>
+                <th>Tổng tiền</th>
+            </tr>
+            <tr>
+                <td>1</td><td>Bàn 03</td><td>8:13</td><td>9:00</td>
+                <td>40.000</td><td>55.000</td><td>95.000</td>
+            </tr>
+            <tr>
+                <td>2</td><td>Bàn 01</td><td>10:09</td><td>1:10</td>
+                <td>0</td><td>165.000</td><td>165.000</td>
+            </tr>
+            <tr class="active">
+                <td>4</td><td>Bàn 09</td><td>14:55</td><td>17:45</td>
+                <td>45.000</td><td>180.000</td><td>225.000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <span>1</span><span>2</span><span>3</span><span>&gt;&gt;</span>
+    </div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+    <div class="tabs">
+        <div class="active">Vào ra</div>
+        <div>Thông tin</div>
+        <div>Khác</div>
+    </div>
+
+    <div class="time-box">
+        <div><span>Giờ vào:</span><span>7/12 14:55</span></div>
+        <div><span>Giờ ra:</span><span>7/12 17:45</span></div>
+    </div>
+
+    <div class="table-name">Bàn 09</div>
+
+    <div class="bill-actions">
+        <button>+1</button>
+        <button>-1</button>
+        <button>XÓA</button>
+        <button>IN HĐ</button>
+    </div>
+
+    <div class="bill-items">
+        <table>
+            <tr>
+                <th>Mã</th><th>Tên hàng</th><th>SL</th><th>Đơn giá</th>
+            </tr>
+            <tr>
+                <td>HH003</td><td>Bò húc</td><td>1</td><td>25</td>
+            </tr>
+            <tr>
+                <td>HH002</td><td>Coca</td><td>1</td><td>20</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="total">
+        <div><span>Tiền hàng:</span><span>45.000 vnd</span></div>
+        <div><span>Tiền giờ:</span><span>180.000 vnd</span></div>
+        <div><span>Khuyến mãi:</span><span>0 vnd</span></div>
+        <div class="sum"><span>TỔNG CỘNG</span><span>225.000 vnd</span></div>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quốc Vinh Billiards - Khuyến mãi</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#d9d9d9;
+}
+
+/* ===== HEADER ===== */
+.header{
+    height:60px;
+    background:#e6e6e6;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.header .title{
+    font-size:26px;
+    font-weight:700;
+}
+
+.header .user{
+    font-size:14px;
+}
+
+/* ===== MENU ===== */
+.top-menu{
+    height:38px;
+    background:#bdbdbd;
+    display:flex;
+    align-items:center;
+}
+
+.top-menu div{
+    padding:8px 25px;
+    font-weight:600;
+    color:#0033cc;
+}
+
+.top-menu .active{
+    background:#fff;
+    border-radius:4px 4px 0 0;
+}
+
+/* ===== MAIN ===== */
+.main{
+    display:flex;
+    padding:12px;
+    gap:12px;
+}
+
+/* ===== LEFT TABLE ===== */
+.left{
+    flex:1;
+    background:#fff;
+    border:1px solid #999;
+    padding:10px;
+}
+
+.left h3{
+    margin:0 0 10px 0;
+}
+
+/* FILTER */
+.filter{
+    margin-bottom:8px;
+    display:flex;
+    gap:10px;
+}
+
+.filter input, .filter select{
+    padding:4px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+th, td{
+    border:1px solid #999;
+    padding:6px;
+    text-align:center;
+}
+
+th{
+    background:#dcdcdc;
+}
+
+tr.active{
+    background:#cce0ff;
+}
+
+/* ===== RIGHT FORM ===== */
+.right{
+    width:320px;
+    background:#f0f0f0;
+    border:1px solid #999;
+    padding:10px;
+}
+
+.right h3{
+    margin:0 0 10px 0;
+    text-align:center;
+    border-bottom:2px solid #000;
+    padding-bottom:6px;
+}
+
+.form-group{
+    margin-bottom:8px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    margin-bottom:2px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:6px;
+}
+
+/* BUTTONS */
+.actions{
+    margin-top:10px;
+    display:flex;
+    gap:6px;
+}
+
+.actions button{
+    flex:1;
+    padding:8px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.add{ background:#4caf50; }
+.update{ background:#2196f3; color:#fff;}
+.delete{ background:#f44336; color:#fff;}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="title">Quốc Vinh Billiards</div>
+    <div class="user">người sử dụng: QV004 | Phan Huy</div>
+</div>
+
+<!-- MENU -->
+<div class="top-menu">
+    <div>Doanh thu</div>
+    <div>Thanh toán</div>
+    <div>Đặt bàn</div>
+    <div>Nhân viên</div>
+    <div class="active">Khuyến mãi</div>
+</div>
+
+<div class="main">
+
+<!-- LEFT: DANH SÁCH KHUYẾN MÃI -->
+<div class="left">
+    <h3>DANH SÁCH KHUYẾN MÃI</h3>
+
+    <div class="filter">
+        <select>
+            <option>Tất cả</option>
+            <option>Đang áp dụng</option>
+            <option>Hết hạn</option>
+        </select>
+        <input type="text" placeholder="Tìm mã KM">
+    </div>
+
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Mã KM</th>
+            <th>Tên khuyến mãi</th>
+            <th>Hình thức</th>
+            <th>Giá trị</th>
+            <th>Từ ngày</th>
+            <th>Đến ngày</th>
+            <th>Trạng thái</th>
+        </tr>
+        <tr class="active">
+            <td>1</td>
+            <td>KM01</td>
+            <td>Giảm cuối tuần</td>
+            <td>%</td>
+            <td>10%</td>
+            <td>01/12/2025</td>
+            <td>31/12/2025</td>
+            <td>Đang áp dụng</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>KM02</td>
+            <td>Giảm tiền giờ</td>
+            <td>Tiền</td>
+            <td>20.000</td>
+            <td>05/12/2025</td>
+            <td>10/12/2025</td>
+            <td>Hết hạn</td>
+        </tr>
+    </table>
+</div>
+
+<!-- RIGHT: FORM KHUYẾN MÃI -->
+<div class="right">
+    <h3>THÔNG TIN KHUYẾN MÃI</h3>
+
+    <div class="form-group">
+        <label>Mã khuyến mãi</label>
+        <input type="text" value="KM01">
+    </div>
+
+    <div class="form-group">
+        <label>Tên khuyến mãi</label>
+        <input type="text" value="Giảm cuối tuần">
+    </div>
+
+    <div class="form-group">
+        <label>Hình thức</label>
+        <select>
+            <option>%</option>
+            <option>Tiền</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Giá trị</label>
+        <input type="text" value="10">
+    </div>
+
+    <div class="form-group">
+        <label>Ngày bắt đầu</label>
+        <input type="date">
+    </div>
+
+    <div class="form-group">
+        <label>Ngày kết thúc</label>
+        <input type="date">
+    </div>
+
+    <div class="form-group">
+        <label>Trạng thái</label>
+        <select>
+            <option>Đang áp dụng</option>
+            <option>Hết hạn</option>
+        </select>
+    </div>
+
+    <div class="actions">
+        <button class="add">Thêm</button>
+        <button class="update">Sửa</button>
+        <button class="delete">Xóa</button>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quốc Vinh Billiards - Báo cáo thống kê</title>
+
+<!-- ✅ BẮT BUỘC: CHART.JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#d9d9d9;
+}
+
+/* ===== HEADER ===== */
+.header{
+    height:60px;
+    background:#e6e6e6;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.header .title{
+    font-size:26px;
+    font-weight:700;
+}
+
+.header .user{
+    font-size:14px;
+}
+
+/* ===== MENU ===== */
+.top-menu{
+    height:38px;
+    background:#bdbdbd;
+    display:flex;
+    align-items:center;
+}
+
+.top-menu div{
+    padding:8px 25px;
+    font-weight:600;
+    color:#0033cc;
+}
+
+.top-menu .active{
+    background:#fff;
+    border-radius:4px 4px 0 0;
+}
+
+/* ===== MAIN ===== */
+.main{
+    padding:12px;
+}
+
+/* FILTER */
+.filter{
+    background:#f0f0f0;
+    padding:8px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+/* ===== SUMMARY BOX ===== */
+.summary{
+    display:flex;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.card{
+    flex:1;
+    background:#fff;
+    border:1px solid #999;
+    padding:12px;
+}
+
+.card h3{
+    margin:0 0 6px 0;
+    font-size:16px;
+}
+
+.card .value{
+    font-size:22px;
+    font-weight:700;
+    color:#d60000;
+}
+
+/* ===== TABLE ===== */
+.table-box{
+    background:#fff;
+    border:1px solid #999;
+}
+
+.table-box table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table-box th,
+.table-box td{
+    border:1px solid #999;
+    padding:6px;
+    text-align:center;
+}
+
+.table-box th{
+    background:#dcdcdc;
+}
+
+/* ===== CHART ===== */
+.chart-box{
+    background:#fff;
+    border:1px solid #999;
+    margin-top:12px;
+    padding:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="title">Quốc Vinh Billiards</div>
+    <div class="user">người sử dụng: QV004 | Phan Huy</div>
+</div>
+
+<!-- MENU -->
+<div class="top-menu">
+    <div class="active">Báo cáo</div>
+    <div>Doanh thu</div>
+    <div>Thanh toán</div>
+    <div>Nhân viên</div>
+    <div>Khuyến mãi</div>
+</div>
+
+<div class="main">
+
+<!-- FILTER -->
+<div class="filter">
+    <b>Thống kê theo:</b>
+    <select>
+        <option>Theo ngày</option>
+        <option>Theo tháng</option>
+        <option>Theo năm</option>
+    </select>
+    Từ: <input type="text" value="07/12/2014">
+    Đến: <input type="text" value="07/12/2014">
+    <button>Xem báo cáo</button>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+    <div class="card"><h3>Tổng doanh thu</h3><div class="value">1.275.000 vnd</div></div>
+    <div class="card"><h3>Tổng tiền giờ</h3><div class="value">820.000 vnd</div></div>
+    <div class="card"><h3>Tổng tiền hàng</h3><div class="value">455.000 vnd</div></div>
+    <div class="card"><h3>Số lượt bàn</h3><div class="value">11</div></div>
+</div>
+
+<!-- TABLE -->
+<div class="table-box">
+<table>
+<tr>
+<th>STT</th><th>Bàn</th><th>Giờ vào</th><th>Giờ ra</th>
+<th>Tiền giờ</th><th>Tiền hàng</th><th>Tổng tiền</th>
+</tr>
+<tr><td>1</td><td>Bàn 01</td><td>08:00</td><td>10:30</td><td>110.000</td><td>20.000</td><td>130.000</td></tr>
+<tr><td>2</td><td>Bàn 05</td><td>12:00</td><td>17:30</td><td>324.000</td><td>155.000</td><td>479.000</td></tr>
+<tr><td>3</td><td>Bàn 09</td><td>14:55</td><td>17:45</td><td>180.000</td><td>45.000</td><td>225.000</td></tr>
+</table>
+</div>
+
+<!-- ✅ BIỂU ĐỒ -->
+<div class="chart-box">
+    <h3>Biểu đồ doanh thu theo bàn</h3>
+    <canvas id="revenueChart" height="120"></canvas>
+</div>
+
+</div>
+
+<!-- ✅ JS PHẢI ĐẶT CUỐI -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('revenueChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Bàn 01', 'Bàn 05', 'Bàn 09'],
+            datasets: [{
+                data: [130000, 479000, 225000],
+                backgroundColor: ['#2196f3','#4caf50','#f44336']
+            }]
+        },
+        options: {
+            plugins:{ legend:{ display:false }},
+            scales:{
+                y:{
+                    ticks:{
+                        callback:v=>v.toLocaleString()+" vnd"
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

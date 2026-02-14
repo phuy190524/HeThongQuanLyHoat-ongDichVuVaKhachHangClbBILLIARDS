@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quốc Vinh Billiards - Nhân viên</title>
+
+<style>
+*{
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#d6d6d6;
+}
+
+/* ===== HEADER ===== */
+.header{
+    height:60px;
+    background:#e5e5e5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.header h1{
+    margin:0;
+    font-size:26px;
+    font-weight:600;
+}
+
+.header .user{
+    font-size:14px;
+}
+
+/* ===== MENU TOP ===== */
+.top-menu{
+    height:38px;
+    background:#bdbdbd;
+    display:flex;
+    align-items:center;
+}
+
+.top-menu div{
+    padding:8px 25px;
+    cursor:pointer;
+    font-weight:600;
+    color:#0033cc;
+}
+
+.top-menu .active{
+    background:#ffffff;
+    border-radius:4px 4px 0 0;
+}
+
+/* ===== MAIN ===== */
+.main{
+    display:flex;
+    height:calc(100vh - 98px);
+}
+
+/* ===== LEFT MENU ===== */
+.sidebar{
+    width:220px;
+    background:#cfcfcf;
+    padding:10px;
+}
+
+.sidebar div{
+    padding:8px 10px;
+    cursor:pointer;
+}
+
+.sidebar div:hover{
+    background:#b5b5b5;
+}
+
+/* ===== CONTENT ===== */
+.content{
+    flex:1;
+    background:#eeeeee;
+    padding:10px;
+    display:flex;
+}
+
+/* ===== TABLE AREA ===== */
+.table-area{
+    flex:1;
+    background:#ffffff;
+    padding:10px;
+    border:1px solid #aaa;
+}
+
+.table-area h2{
+    text-align:center;
+    margin:5px 0 10px;
+}
+
+.search{
+    margin-bottom:10px;
+}
+
+.search input{
+    padding:6px;
+    width:200px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+table th, table td{
+    border:1px solid #aaa;
+    padding:6px;
+    text-align:center;
+}
+
+table tr:nth-child(even){
+    background:#f3f3f3;
+}
+
+table tr.active{
+    background:#cce0ff;
+}
+
+/* BUTTONS */
+.actions{
+    margin-top:10px;
+}
+
+.actions button{
+    padding:8px 14px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.add{
+    background:#0066ff;
+    color:#fff;
+}
+
+.delete{
+    background:#ff3333;
+    color:#fff;
+}
+
+/* ===== INFO PANEL ===== */
+.info{
+    width:300px;
+    margin-left:10px;
+    background:#ffffff;
+    border-radius:10px;
+    padding:10px;
+    border:1px solid #aaa;
+}
+
+.info h3{
+    text-align:center;
+    margin:5px 0 10px;
+    border-bottom:2px solid #000;
+    padding-bottom:5px;
+}
+
+.avatar{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.avatar img{
+    width:70px;
+}
+
+.info p{
+    font-size:13px;
+    margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Quốc Vinh Billiards</h1>
+    <div class="user">người sử dụng: QV001 | đổi mật khẩu | thoát</div>
+</div>
+
+<!-- TOP MENU -->
+<div class="top-menu">
+    <div>Doanh thu trong ngày</div>
+    <div>Thanh toán</div>
+    <div>Đặt bàn</div>
+    <div class="active">Nhân viên</div>
+    <div>Khuyến mãi</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- LEFT MENU -->
+    <div class="sidebar">
+        <div>▶ Danh sách nhân viên</div>
+        <div>▶ Bảng chấm công</div>
+        <div>▶ Bảng lương</div>
+        <div>▶ Bảo hiểm</div>
+        <div>▶ Trợ giúp</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- TABLE -->
+        <div class="table-area">
+            <div class="search">
+                <input type="text" placeholder="Nhập mã nv">
+            </div>
+
+            <h2>DANH SÁCH NHÂN VIÊN</h2>
+
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã NV</th>
+                    <th>Họ và tên</th>
+                    <th>Giới tính</th>
+                    <th>Chức vụ</th>
+                    <th>Ca làm việc</th>
+                </tr>
+               
+                    <td>01</td><td>QV001</td><td>Trần Minh Phú</td><td>Nam</td><td>Nhân viên</td><td>Sáng</td>
+                </tr>
+                <tr>
+                    <td>02</td><td>QV002</td><td>Tống Xuân Phùng</td><td>Nam</td><td>Nhân viên</td><td>Chiều</td>
+                </tr>
+                <tr>
+                    <td>03</td><td>QV003</td><td>Trần Văn Pha</td><td>Nam</td><td>Nhân viên</td><td>Tối</td>
+                </tr>
+                <tr class="active">
+                    <td>04</td><td>QV004</td><td>Phan Huy</td><td>Nam</td><td>Quản Lý</td><td>Full time</td>
+                </tr>
+            </table>
+
+            <div class="actions">
+                <button class="add">Thêm Nhân Viên</button>
+                <button class="delete">Xóa nhân viên</button>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="info">
+            <h3>THÔNG TIN NHÂN VIÊN</h3>
+
+            <div class="avatar">
+                <img src="logo.png" alt="">
+            </div>
+
+            <p><b>Họ tên:</b> Phan Huy</p>
+            <p><b>Mã NV:</b> QV004</p>
+            <p><b>Giới tính:</b> Nam</p>
+            <p><b>Nơi sinh:</b> TP Huế</p>
+            <p><b>CCCD:</b> 123456789</p>
+            <p><b>Quốc tịch:</b> Việt Nam</p>
+            <p><b>Ngày sinh:</b> 19/05/2004</p>
+            <p><b>SĐT:</b> 0374754354</p>
+            <p><b>Địa chỉ:</b> Phú Xuân, Phú Vang</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hóa đơn bán hàng</title>
+
+<style>
+@page{
+    size: 80mm auto;
+    margin: 5mm;
+}
+
+body{
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.center{ text-align:center; }
+.right{ text-align:right; }
+.bold{ font-weight:bold; }
+.small{ font-size:11px; }
+
+hr{
+    border:none;
+    border-top:1px dashed #000;
+    margin:6px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+td{
+    padding:2px 0;
+    vertical-align:top;
+}
+
+.total{
+    font-size:14px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="center bold">QUỐC VINH Billiards</div>
+<div class="center small">ĐC: 134 Nguyễn Huệ - Huế</div>
+<div class="center small">ĐT: 0914 456 123</div>
+
+<hr>
+
+<div class="center bold">HÓA ĐƠN BÁN HÀNG</div>
+<div class="center small">Ban19</div>
+
+<hr>
+
+<table>
+<tr><td>Ngày:</td><td class="right">01/12/2025</td></tr>
+<tr><td>Thu ngân:</td><td class="right">Phan Huy</td></tr>
+<tr><td>Nhân viên:</td><td class="right">Minh Phú</td></tr>
+<tr><td>Số phiếu:</td><td class="right">HD202512168</td></tr>
+<tr><td>In lúc:</td><td class="right">22:51</td></tr>
+</table>
+
+<hr>
+
+<!-- GIỜ BÀN -->
+<table>
+<tr class="bold">
+<td>Vào</td>
+<td>Ra</td>
+<td>Bàn</td>
+<td>T.gian</td>
+<td class="right">Đ.giá</td>
+<td class="right">T.tiền</td>
+</tr>
+
+<tr>
+<td>21:06</td>
+<td>22:51</td>
+<td>Ban19</td>
+<td>1h44'</td>
+<td class="right">65.000</td>
+<td class="right">114.000</td>
+</tr>
+</table>
+
+<hr>
+
+<!-- MẶT HÀNG -->
+<table>
+<tr class="bold">
+<td>Mặt hàng</td>
+<td class="right">ĐVT</td>
+<td class="right">SL</td>
+<td class="right">Giá</td>
+<td class="right">T.tiền</td>
+</tr>
+
+<tr>
+<td>SÀI GÒN</td>
+<td class="right">GÓI</td>
+<td class="right">1</td>
+<td class="right">23.000</td>
+<td class="right">23.000</td>
+</tr>
+
+<tr>
+<td>NƯỚC SUỐI</td>
+<td class="right">CHAI</td>
+<td class="right">1</td>
+<td class="right">14.000</td>
+<td class="right">14.000</td>
+</tr>
+</table>
+
+<hr>
+
+<!-- TỔNG KẾT -->
+<table>
+<tr><td>Tổng SL:</td><td class="right">2</td></tr>
+<tr><td>Tiền giờ:</td><td class="right">114.000</td></tr>
+<tr><td>Tiền hàng:</td><td class="right">37.000</td></tr>
+<tr><td>Giảm giá 20%:</td><td class="right">22.800</td></tr>
+<tr class="total">
+<td>TỔNG:</td>
+<td class="right">128.200</td>
+</tr>
+</table>
+
+<hr>
+
+<div class="small">
+Tổng tiền (bằng chữ): Một trăm hai mươi tám ngàn, hai trăm đồng chẵn
+</div>
+
+<hr>
+
+<!-- QR CODE -->
+<div class="center">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=HD202512168" alt="QR Code">
+</div>
+
+<div class="center small">Quét mã để thanh toán hóa đơn</div>
+
+<hr>
+
+<div class="center small">CẢM ƠN QUÝ KHÁCH</div>
+<div class="center small">HẸN GẶP LẠI!</div>
+
+<script>
+window.print();
+</script>
+
+</body>
+</html>

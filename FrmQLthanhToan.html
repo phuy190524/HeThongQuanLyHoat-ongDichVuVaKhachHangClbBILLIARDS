@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quốc Vinh Billiards - Thanh toán</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    background:#cfcfcf;
+}
+
+/* ===== HEADER ===== */
+.header{
+    height:60px;
+    background:#e5e5e5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.header h1{
+    margin:0;
+    font-size:26px;
+}
+
+.user{
+    font-size:14px;
+}
+
+/* ===== TOP MENU ===== */
+.top-menu{
+    height:38px;
+    background:#bdbdbd;
+    display:flex;
+    align-items:center;
+}
+
+.top-menu div{
+    padding:8px 25px;
+    font-weight:600;
+    color:#0033cc;
+}
+
+.top-menu .active{
+    background:#fff;
+    border-radius:4px 4px 0 0;
+}
+
+/* ===== MAIN ===== */
+.main{
+    display:flex;
+    height:calc(100vh - 98px);
+}
+
+/* ===== LEFT TABLE LIST ===== */
+.left{
+    width:220px;
+    background:#bfbfbf;
+    padding:10px;
+}
+
+.table-btn{
+    padding:10px;
+    margin-bottom:8px;
+    text-align:center;
+    font-weight:600;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.red{ background:#ff2b2b; color:#fff;}
+.green{ background:#6edb4a;}
+.gray{ background:#f1f1f1;}
+
+/* ===== CENTER ===== */
+.center{
+    flex:1;
+    background:#efefef;
+    padding:10px;
+}
+
+.category{
+    display:flex;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+.category div{
+    padding:6px 12px;
+    background:#ddd;
+    border-radius:4px;
+}
+
+.category .active{
+    background:#2f8df5;
+    color:#fff;
+}
+
+/* ITEM TABLE */
+.items{
+    background:#fff;
+    border:1px solid #999;
+    height:350px;
+    overflow:auto;
+}
+
+.items table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+
+.items th, .items td{
+    border:1px solid #aaa;
+    padding:6px;
+    text-align:center;
+}
+
+.items th{
+    background:#66cc66;
+}
+
+/* ACTION BUTTONS */
+.center-actions{
+    margin-top:10px;
+    display:flex;
+    gap:8px;
+}
+
+.center-actions button{
+    padding:8px 12px;
+    border:none;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.blue{background:#0066ff;color:#fff;}
+.red-btn{background:#ff3333;color:#fff;}
+.green-btn{background:#66cc66;color:#fff;}
+
+/* ===== RIGHT BILL ===== */
+.right{
+    width:320px;
+    background:#eaeaea;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ===== TIME BOX ===== */
+.time-box{
+    background:#fff;
+    border:2px solid #999;
+    border-radius:6px;
+    padding:8px;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.time-box div{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:4px;
+}
+
+/* TITLE */
+.bill-title{
+    background:#fff;
+    padding:10px;
+    text-align:center;
+    font-size:30px;
+    color:red;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+/* BILL ACTIONS */
+.bill-actions{
+    display:flex;
+    gap:6px;
+    margin-bottom:6px;
+}
+
+.bill-actions button{
+    flex:1;
+    padding:6px;
+    font-weight:600;
+}
+
+/* BILL TABLE */
+.bill-table{
+    flex:1;
+    background:#fff;
+    border:1px solid #999;
+    margin-bottom:8px;
+}
+
+/* PAYMENT INFO */
+.payment-info{
+    background:#ddd;
+    padding:8px;
+    font-size:13px;
+}
+
+.payment-info div{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:6px;
+}
+
+.payment-info input{
+    width:60px;
+    text-align:right;
+}
+
+/* PAY BUTTON */
+.pay-btn{
+    margin-top:8px;
+    background:#4CAF50;
+    color:#000;
+    font-size:20px;
+    font-weight:800;
+    padding:14px;
+    border:2px solid #2e7d32;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    function tinhTien() {
+
+        // 🔒 KIỂM TRA BẢNG HÓA ĐƠN
+        let table = document.getElementById("billTable");
+        if (!table) return;
+
+        let rows = table.querySelectorAll("tbody tr");
+        let tong = 0;
+
+        rows.forEach(row => {
+            let sl = parseInt(row.children[2].innerText) || 0;
+            let gia = parseInt(row.children[3].innerText) || 0;
+            tong += sl * gia;
+        });
+
+        // 🔒 KIỂM TRA INPUT KHUYẾN MÃI
+        let kmInput = document.getElementById("kmPercent");
+        if (!kmInput) return;
+
+        let kmPercent = parseInt(kmInput.value) || 0;
+        let giam = tong * kmPercent / 100;
+        let tongCong = tong - giam;
+
+        // 🔒 KIỂM TRA OUTPUT
+        let tienHang = document.getElementById("tienHang");
+        let kmVnd = document.getElementById("kmVnd");
+        let tongEl = document.getElementById("tongCong");
+
+        if (tienHang) tienHang.innerText = tong.toLocaleString() + " vnd";
+        if (kmVnd) kmVnd.innerText = giam.toLocaleString() + " vnd";
+        if (tongEl) tongEl.innerText = tongCong.toLocaleString() + " vnd";
+    }
+
+    // CHẠY LẦN ĐẦU
+    tinhTien();
+
+    // LẮNG NGHE KHUYẾN MÃI
+    let kmInput = document.getElementById("kmPercent");
+    if (kmInput) {
+        kmInput.addEventListener("input", tinhTien);
+    }
+
+});
+</script>
+
+
+
+<body>
+
+<div class="header">
+    <h1>Quốc Vinh Billiards</h1>
+    <div class="user">người sử dụng: QV004 | Phan Huy</div>
+</div>
+
+<div class="top-menu">
+    <div>Doanh thu trong ngày</div>
+    <div class="active">Thanh toán</div>
+    <div>Đặt bàn</div>
+    <div>Nhân viên</div>
+    <div>Khuyến mãi</div>
+</div>
+
+
+
+<div class="main">
+
+    <div class="left">
+        <div class="table-btn red">Bàn số 01</div>
+        <div class="table-btn red">Bàn số 02</div>
+        <div class="table-btn red">Bàn số 03</div>
+        <div class="table-btn gray">Bàn số 04</div>
+        <div class="table-btn green">Bàn số 05</div>
+        <div class="table-btn gray">Bàn số 06</div>
+    </div>
+
+    <div class="center">
+        <div class="category">
+            <div class="active">Tất cả</div>
+            <div>Coffee</div>
+            <div>Đồ ăn vặt</div>
+            <div>Nước ngọt</div>
+            <div>Khác</div>
+        </div>
+
+        <div class="items">
+            <table>
+                <tr>
+                    <th>STT</th><th>Mã hàng</th><th>Tên hàng</th><th>DVT</th><th>Giá</th>
+                </tr>
+                <tr><td>1</td><td>HH001</td><td>Bia</td><td>lon</td><td>25.000</td></tr>
+                <tr><td>2</td><td>HH002</td><td>Coca</td><td>lon</td><td>10.000</td></tr>
+                <tr><td>3</td><td>HH003</td><td>Bò Húc</td><td>lon</td><td>20.000</td></tr>
+                <tr><td>4</td><td>HH004</td><td>Sting</td><td>lon</td><td>10.000</td></tr>
+                <tr><td>5</td><td>HH005</td><td>Trái Cây</td><td>dĩa</td><td>100.000</td></tr>
+                <tr><td>6</td><td>HH006</td><td>Mỳ tôm</td><td>Tô</td><td>30.000</td></tr>
+            </table>
+        </div>
+
+        <div class="center-actions">
+            <button class="blue">Thoát</button>
+            <button class="red-btn">Gộp bàn</button>
+            <button class="green-btn">Trả đồ</button>
+            <button class="green-btn">Lưu HĐ</button>
+            <button class="red-btn">Hủy HĐ</button>
+        </div>
+    </div>
+
+    <div class="right">
+
+        <div class="time-box">
+            <div><span>Giờ vào:</span><span>07/12 10:45</span></div>
+            <div><span>Giờ ra:</span><span>07/12 17:45</span></div>
+        </div>
+
+        <div class="bill-title">Bàn 05</div>
+
+        <div class="bill-actions">
+            <button>+1</button>
+            <button>-1</button>
+            <button>Xóa</button>
+            <button>In HĐ</button>
+        </div>
+
+        <div class="bill-table">
+    <table id="billTable" style="width:100%; border-collapse:collapse; font-size:13px;">
+        <thead>
+            <tr style="background:#ddd;">
+                <th style="border:1px solid #999;">Mã</th>
+                <th style="border:1px solid #999;">Tên hàng</th>
+                <th style="border:1px solid #999;">SL</th>
+                <th style="border:1px solid #999;">Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>HH001</td>
+                <td>Bia</td>
+                <td>2</td>
+                <td class="price">20000</td>
+            </tr>
+            <tr>
+                <td>HH002</td>
+                <td>Coca</td>
+                <td>1</td>
+                <td class="price">20000</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+
+       <div class="payment-info">
+    <div><span>Tiền hàng:</span><span id="tienHang">0 vnd</span></div>
+    <div><span>Khuyến mãi (%):</span><input type="text" id="kmPercent" value="0"></div>
+    <div><span>Khuyến mãi (vnd):</span><span id="kmVnd">0 vnd</span></div>
+    <div><b>TỔNG CỘNG</b><b id="tongCong" style="color:red;">0 vnd</b></div>
+</div>
+
+
+        <button class="pay-btn">THANH TOÁN</button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
